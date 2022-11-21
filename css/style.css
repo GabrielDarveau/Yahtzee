@@ -1,0 +1,29 @@
+@font-face {
+    font-family: CrustyRock;
+    src: url(font/ChrustyRock-ORLA.ttf);
+  }
+
+body{
+    text-align: center;
+    font-family: CrustyRock;
+    background-color: rgb(107, 107, 107);
+}
+
+#table{
+    background-image: url("../img/Table.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    width: 1500px;
+    border: none;
+    font-family: Arial, sans-serif;
+    border-radius: 40px;
+    height: 800px;
+}
+
+#fiche, th, td{
+    border: 1px black solid;
+    background-color: white;
+    text-align: left;
+    
+}
