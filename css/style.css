@@ -19,11 +19,78 @@ body{
     font-family: Arial, sans-serif;
     border-radius: 40px;
     height: 800px;
+    padding: 20px;
+}
+
+#jeu{
+    float: left;
+    text-align: center;
+    width: 1180px;
+}
+
+img{
+    height: 80px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#lances{
+    height: 600px;
+}
+
+.bouton-lancer{
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #74e2a6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    font-family: Arial, sans-serif;
+}
+
+.bouton-lancer:hover {background-color: #5ca57d}
+
+.bouton-lancer:active {
+  background-color: #5ca57d;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#des{
+    margin-top: 20px;
+}
+
+#container-fiche{
+    float: right;
 }
 
 #fiche, th, td{
     border: 1px black solid;
     background-color: white;
     text-align: left;
-    
 }
+
+th, td{
+    padding: 5px !important;
+}
+
+h1{
+    font-size: 50px;
+}
+
+h2{
+    margin: 0px;
+    text-align: center;
+}
+
+h3{
+    margin: 0px;
+}
+
+

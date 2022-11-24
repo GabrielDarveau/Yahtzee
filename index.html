@@ -4,99 +4,124 @@
         <title>Yahtzee</title>
         <meta charset="utf-8" />
 		<link rel="stylesheet" href="css/style.css">
-        <script src="script.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </head>
-    <body>
+    <body onload="innit();">
         <h1>Yahtzee</h1>
         <div id="table">
-            <div>
-            </div>
-            <table id="fiche">
-                <h1>Yahtzee</h1>
-                <!-- Section sup -->
-                <tr>
-                    <th>Section Supérieure</th>
-                    <th>Jeu 1</th>
-                </tr>
-                <tr>
-                    <td>Total des <b>AS</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total des <b>DEUX</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total des <b>TROIS</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total des <b>QUATRE</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total des <b>CINQ</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total des <b>SIX</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><b>Total</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>63+ Prime des 35 points</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Total de la section supérieure</td>
-                    <td></td>
-                </tr>
+            <div id="jeu">
+                <div id="lances">
+                    <img id="1" src="img/1.png">
+                    <img id="2" src="img/2.png">
+                    <img id="3" src="img/3.png">
+                    <img id="4" src="img/4.png">
+                    <img id="5" src="img/5.png">
+                </div>
 
-                <!-- Section inf -->
-                <tr>
-                    <th>Section inférieure</th>
-                    <th>Jeu 1</th>
-                </tr>
-                <tr>
-                    <td>Brelan      <b>Total des 5 dés</b></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td></td>
-                </tr>
-            </table>
+                <button onclick="Lancer();" class="bouton-lancer">Lancer</button>
+
+                <div id="des">
+                    <img onclick="" src="img/1.png">
+                    <img src="img/2.png">
+                    <img src="img/3.png">
+                    <img src="img/4.png">
+                    <img src="img/5.png">
+                </div>
+            </div>
+            <div id="container-fiche">      
+                <table id="fiche">
+                    <!-- Section sup -->
+                    <tr>
+                        <th colspan="2"><h2>Yahtzee</h2></th>
+                    </tr>
+                    <tr>
+                        <th><h3>Section Supérieure</h3></th>
+                        <th>Jeu 1</th>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>AS</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>DEUX</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>TROIS</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>QUATRE</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>CINQ</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total des <b>SIX</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>63+ Prime des 35 points</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total de la section supérieure</td>
+                        <td></td>
+                    </tr>
+    
+                    <!-- Section inf -->
+                    <tr>
+                        <th><h3>Section inférieure</h3></th>
+                        <th>Jeu 1</th>
+                    </tr>
+                    <tr>
+                        <td>Brelan &emsp;<b>Total des 5 dés</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Carré &emsp;<b>Total des 5 dés</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Full &emsp;<b>25 points</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Petite suite &emsp;<b>30 points</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Grande suite &emsp;<b>40 points</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>Yahtzee &emsp; 50 points</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chance &emsp;<b>Total des 5 dés</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>Total de la section inférieure</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>Total de la section supérieure</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th><h3>Total Général</h3></th>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
