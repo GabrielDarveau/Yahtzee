@@ -34,13 +34,47 @@ img{
     border-radius: 10px;
 }
 
-#lances{
+#des{
     height: 600px;
 }
 
-#lances img{
-    display: none;
+#des img{
+    display: block;
+    position: relative;
+    transform: rotate(0deg);
+    transition: all 0.5s;
 }
+
+#d1{
+    position: fixed;
+    top: 650px;
+    left: 400px;
+}
+
+#d2{
+    position: fixed;
+    top: 570px;
+    left: 500px;
+}
+
+#d3{
+    position: absolute;
+    top: 490px;
+    left: 600px;
+}
+
+#d4{
+    position: absolute;
+    top: 410px;
+    left: 700px;
+}
+
+#d5{
+    position: absolute;
+    top: 330px;
+    left: 800px;
+}
+
 .bouton-lancer{
     display: inline-block;
     padding: 15px 25px;
@@ -55,6 +89,8 @@ img{
     border-radius: 15px;
     box-shadow: 0 9px #999;
     font-family: Arial, sans-serif;
+    position: absolute;
+    top:700px;
 }
 
 .bouton-lancer:hover {background-color: #5ca57d}
@@ -63,10 +99,6 @@ img{
   background-color: #5ca57d;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
-
-#des{
-    margin-top: 20px;
 }
 
 #container-fiche{

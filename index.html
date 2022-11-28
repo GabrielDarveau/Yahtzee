@@ -10,23 +10,17 @@
         <h1>Yahtzee</h1>
         <div id="table">
             <div id="jeu">
-                <div id="lances">
-                    <img id="1" src="img/1.png">
-                    <img id="2" src="img/2.png">
-                    <img id="3" src="img/3.png">
-                    <img id="4" src="img/4.png">
-                    <img id="5" src="img/5.png">
-                </div>
-
-                <button onclick="Lancer();" class="bouton-lancer">Lancer</button>
-
                 <div id="des">
-                    <img id="d1" src="img/1.png">
-                    <img id="d2" src="img/2.png">
-                    <img id="d3" src="img/3.png">
-                    <img id="d4" src="img/4.png">
-                    <img id="d5" src="img/5.png">
+                    <img onclick="Selectionner(this.id);" id="d1" src="img/1.png">
+                    <img onclick="Selectionner(this.id);" id="d2" src="img/2.png">
+                    <img onclick="Selectionner(this.id);" id="d3" src="img/3.png">
+                    <img onclick="Selectionner(this.id);" id="d4" src="img/4.png">
+                    <img onclick="Selectionner(this.id);" id="d5" src="img/5.png">
+                    
+                    <button onclick="Lancer();" class="bouton-lancer">Lancer</button>
                 </div>
+
+
             </div>
             <div id="container-fiche">      
                 <table id="fiche">
