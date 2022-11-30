@@ -5,24 +5,24 @@ function innit(){
 }
 
 function Lancer(){
-
-    for(let i = 1; i <= 5 ; i++){
-        de = document.getElementById("d"+i);
-        if(!de.classList.contains("active")){
-            var pos = GetPos(de);
-            de.style.top = pos[0] + 'px';
-            de.style.left = pos[1] + 'px';
-    
-            var angle = (Math.floor(Math.random() * 360)) + "deg";
-            de.style.transform = "rotate(" + angle + ")";
-    
-            var valeur = Math.floor(Math.random() * (7 - 1) + 1);
-            de.src="img/"+valeur+".png";
-        }
+    if(etatTour < 3){
+        for(let i = 1; i <= 5 ; i++){
+            de = document.getElementById("d"+i);
+            if(!de.classList.contains("active")){
+                var pos = GetPos(de);
+                de.style.top = pos[0] + 'px';
+                de.style.left = pos[1] + 'px';
         
-    }
+                var angle = (Math.floor(Math.random() * 360)) + "deg";
+                de.style.transform = "rotate(" + angle + ")";
+        
+                var valeur = Math.floor(Math.random() * (7 - 1) + 1);
+                de.src="img/"+valeur+".png";
+            }
+        }
 
-    etatTour++;
+        etatTour++;
+    }
 }
 
 function GetPos(de){
@@ -96,4 +96,66 @@ function Selectionner(id){
 
         }
     }
+}
+
+function GetValeurs(){
+    var valeurs = [];
+    valeurs[0] = document.getElementById("d1").src[4];
+    valeurs[1] = document.getElementById("d2").src[4];
+    valeurs[2] = document.getElementById("d3").src[4];
+    valeurs[3] = document.getElementById("d4").src[4];
+    valeurs[4] = document.getElementById("d5").src[4];
+
+    return valeurs;
+}
+
+function DeterminerCombi(){
+    var valeurs = GetValeurs();
+
+    if(IsAs(valeurs) == true){
+
+    }
+    else if(IsDeux(valeurs) == true){
+
+    }
+    else if(IsTrois(valeurs) == true){
+
+    }
+    else if(IsQuatre(valeurs) == true){
+
+    }
+    else if(IsCinq(valeurs) == true){
+
+    }
+    else if(IsSix(valeurs) == true){
+
+    }
+    else if(SupRempli() == true){
+
+    }
+    else if(IsBonus() == true){
+
+    }
+    else if(IsTotalRempli(valeurs) == true){
+
+    }
+    else if(IsBrelan(valeurs) == true){
+
+    }
+    else if(IsCarre(valeurs) == true){
+
+    }
+    else if(IsFull(valeurs) == true){
+
+    }
+    else if(IsPetiteSuite(valeurs) == true){
+
+    }
+    else if(IsGrandeSuite(valeurs) == true){
+
+    }
+    else if(IsYahtzee(valeurs) == true){
+
+    }
+    
 }
