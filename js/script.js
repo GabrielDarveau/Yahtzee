@@ -1,5 +1,6 @@
 var etatTour = 0;
 const desSel = [0, 0, 0, 0, 0];
+var joueur = "Jeu1";
 
 function innit(){
     document.getElementById("table").style.display = "none";
@@ -88,6 +89,7 @@ function Lancer(){
             }
         }
 
+        DeterminerCombi();
         etatTour++;
     }
 }
@@ -167,11 +169,11 @@ function Selectionner(id){
 
 function GetValeurs(){
     var valeurs = [];
-    valeurs[0] = document.getElementById("d1").src[4];
-    valeurs[1] = document.getElementById("d2").src[4];
-    valeurs[2] = document.getElementById("d3").src[4];
-    valeurs[3] = document.getElementById("d4").src[4];
-    valeurs[4] = document.getElementById("d5").src[4];
+    valeurs[0] = document.getElementById("d1").getAttribute("src")[4];
+    valeurs[1] = document.getElementById("d2").getAttribute("src")[4];
+    valeurs[2] = document.getElementById("d3").getAttribute("src")[4];
+    valeurs[3] = document.getElementById("d4").getAttribute("src")[4];
+    valeurs[4] = document.getElementById("d5").getAttribute("src")[4];
 
     return valeurs;
 }
@@ -180,49 +182,219 @@ function DeterminerCombi(){
     var valeurs = GetValeurs();
 
     if(IsAs(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 1) {
+                score = +score + +valeurs[index];
+            }
+        }
+
+        Array.from(document.getElementsByClassName("As")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
 
     }
-    else if(IsDeux(valeurs) == true){
+    if(IsDeux(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 2) {
+                score = +score + +valeurs[index];            }
+        }
+
+        Array.from(document.getElementsByClassName("Deux")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
+    }
+    if(IsTrois(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 3) {
+                score = +score + +valeurs[index];            }
+        }
+
+        Array.from(document.getElementsByClassName("Trois")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
+    }
+    if(IsQuatre(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 4) {
+                score = +score + +valeurs[index];            }
+        }
+
+        Array.from(document.getElementsByClassName("Quatre")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
+    }
+    if(IsCinq(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 5) {
+                score = +score + +valeurs[index];            }
+        }
+
+        Array.from(document.getElementsByClassName("Cinq")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
+    }
+    if(IsSix(valeurs) == true){
+        var score = 0;
+        for (let index = 0; index < valeurs.length; index++) {
+            if (valeurs[index] == 6) {
+                score = +score + +valeurs[index];            }
+        }
+
+        Array.from(document.getElementsByClassName("Six")).forEach(element => {
+            if(element.classList.contains(joueur)){
+                element.innerText = score;
+            }
+        });
+    }
+    if(SupRempli() == true){
 
     }
-    else if(IsTrois(valeurs) == true){
+    if(IsBonus() == true){
 
     }
-    else if(IsQuatre(valeurs) == true){
+    if(IsTotalRempli(valeurs) == true){
 
     }
-    else if(IsCinq(valeurs) == true){
+    if(IsBrelan(valeurs) == true){
 
     }
-    else if(IsSix(valeurs) == true){
+    if(IsCarre(valeurs) == true){
 
     }
-    else if(SupRempli() == true){
+    if(IsFull(valeurs) == true){
 
     }
-    else if(IsBonus() == true){
+    if(IsPetiteSuite(valeurs) == true){
 
     }
-    else if(IsTotalRempli(valeurs) == true){
+    if(IsGrandeSuite(valeurs) == true){
 
     }
-    else if(IsBrelan(valeurs) == true){
+    if(IsYahtzee(valeurs) == true){
 
     }
-    else if(IsCarre(valeurs) == true){
+    // Chance
+    if(InfRempli() == true){
 
     }
-    else if(IsFull(valeurs) == true){
+    if(IsTotalGeneral() == true){
 
     }
-    else if(IsPetiteSuite(valeurs) == true){
+}
 
+function IsAs(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 1) {
+            return true;
+        }
     }
-    else if(IsGrandeSuite(valeurs) == true){
+    return false;
+}
 
+function IsDeux(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 2) {
+            return true;
+        }
     }
-    else if(IsYahtzee(valeurs) == true){
+    return false;
+}
 
+function IsTrois(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 3) {
+            return true;
+        }
     }
+    return false;
+}
+
+function IsQuatre(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 4) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function IsCinq(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 5) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function IsSix(valeurs){
+    for (let index = 0; index < valeurs.length; index++) {
+        if (valeurs[index] == 6) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function SupRempli(valeurs){
+    
+}
+
+function IsBonus(valeurs){
+    
+}
+
+function IsTotalRempli(valeurs){
+    
+}
+
+function IsBrelan(valeurs){
+    
+}
+
+function IsCarre(valeurs){
+    
+}
+
+function IsFull(valeurs){
+    
+}
+
+function IsFull(valeurs){
+    
+}
+
+function IsPetiteSuite(valeurs){
+    
+}
+
+function IsGrandeSuite(valeurs){
+    
+}
+
+function IsYahtzee(valeurs){
+    
+}
+
+function InfRempli(valeurs){
+    
+}
+
+function IsTotalGeneral(valeurs){
     
 }
