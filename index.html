@@ -8,6 +8,19 @@
     </head>
     <body onload="innit();">
         <h1>Yahtzee</h1>
+        <div id="choix">
+            <label for="nbJoueurs">Nombre de joueurs</label><br><br>
+            <select name="noJoueur" id="nbJoueurs">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <br><br>
+            <div>
+                <button onclick="start()">Nouvelle Partie</button>
+            </div>
+        </div>
         <div id="table">
             <div id="jeu">
                     <img onclick="Selectionner(this.id);" id="d1" src="img/1.png">
@@ -24,93 +37,156 @@
                 <table id="fiche">
                     <!-- Section sup -->
                     <tr>
-                        <th colspan="2"><h2>Yahtzee</h2></th>
+                        <th id="titreTable" colspan="2"><h2>Yahtzee</h2></th>
                     </tr>
                     <tr>
                         <th><h3>Section Supérieure</h3></th>
-                        <th>Jeu 1</th>
+                        <th class="Jeu1">Jeu 1</th>
+                        <th class="Jeu2">Jeu 2</th>
+                        <th class="Jeu3">Jeu 3</th>
+                        <th class="Jeu4">Jeu 4</th>
                     </tr>
                     <tr>
                         <td>Total des <b>AS</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Total des <b>DEUX</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Total des <b>TROIS</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Total des <b>QUATRE</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Total des <b>CINQ</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Total des <b>SIX</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td><b>Total</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
-                        <td>63+ Prime des 35 points</td>
-                        <td></td>
+                        <td><b>63+ Prime des 35 points</b></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td><b>Total de la section supérieure</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
     
                     <!-- Section inf -->
                     <tr>
                         <th><h3>Section inférieure</h3></th>
-                        <th>Jeu 1</th>
+                        <th class="Jeu1">Jeu 1</th>
+                        <th class="Jeu2">Jeu 2</th>
+                        <th class="Jeu3">Jeu 3</th>
+                        <th class="Jeu4">Jeu 4</th>
                     </tr>
                     <tr>
                         <td>Brelan &emsp;<b>Total des 5 dés</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Carré &emsp;<b>Total des 5 dés</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Full &emsp;<b>25 points</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Petite suite &emsp;<b>30 points</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Grande suite &emsp;<b>40 points</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td><b>Yahtzee &emsp; 50 points</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td>Chance &emsp;<b>Total des 5 dés</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td><b>Total de la section inférieure</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <td><b>Total de la section supérieure</b></td>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                     <tr>
                         <th><h3>Total Général</h3></th>
-                        <td></td>
+                        <td class="Jeu1"></td>
+                        <td class="Jeu2"></td>
+                        <td class="Jeu3"></td>
+                        <td class="Jeu4"></td>
                     </tr>
                 </table>
             </div>

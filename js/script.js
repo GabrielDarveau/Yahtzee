@@ -2,6 +2,73 @@ var etatTour = 0;
 const desSel = [0, 0, 0, 0, 0];
 
 function innit(){
+    document.getElementById("table").style.display = "none";
+}
+
+function Joueur(nom, val){
+    this.nom = nom;
+    this.val = val;
+}
+
+function start(){
+    document.getElementById("choix").style.display = "none";
+    var joueurs = document.getElementById("nbJoueurs").value;
+    for(let i = 1; i <= joueurs; i++)
+    {
+        var leJoueur = prompt("Quel est votre nom joueur "+ i +" ?");
+        player=new Joueur(leJoueur, i);
+    }
+
+    var max = joueurs;
+    max++;
+
+    var rand = Math.floor(Math.random() * (max-1)) + 1;
+
+    alert("Ce sera le joueur " + rand + " qui commencera!");
+
+    document.getElementById("table").style.display = "block";
+    document.getElementById("titreTable").colSpan = max;
+
+    if(joueurs == "1"){
+        var tab = document.getElementsByClassName("Jeu2");
+        var numb = document.getElementsByClassName("Jeu2").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+        tab = document.getElementsByClassName("Jeu3");
+        numb = document.getElementsByClassName("Jeu3").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+    }
+    else if(joueurs == "2"){
+        tab = document.getElementsByClassName("Jeu3");
+        numb = document.getElementsByClassName("Jeu3").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+    }
+    else if(joueurs == "3"){
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+    }
+}
+
+function nextJoueur(){
+    activePlayer === 1 ? activePlayer = 1 : activePlayer = 0;
 }
 
 function Lancer(){
