@@ -25,7 +25,9 @@ function start(){
 
     var rand = Math.floor(Math.random() * (max-1)) + 1;
 
-    alert("Ce sera le joueur " + rand + " qui commencera!");
+    if(joueurs > 1){
+        alert("Ce sera le joueur " + rand + " qui commencera!");
+    }
 
     document.getElementById("table").style.display = "block";
     document.getElementById("titreTable").colSpan = max;
