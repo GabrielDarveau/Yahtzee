@@ -645,9 +645,13 @@ function Lancer(){
         const options = Array.from(document.getElementsByClassName('option'));
 
         options.forEach(option => {
-            option.addEventListener('click', function handleClick(event) {
-                option.classList.remove("option");
-                ViderOptions();
+            option.addEventListener('click', function handleClick() {
+                if(option.classList.contains("option")){
+                    option.classList.remove("option");
+                    ViderOptions();
+                    SupRempli();
+                    nextJoueur();
+                }
             });
         });
 
@@ -832,15 +836,6 @@ function DeterminerCombi(){
             }
         });
     }
-    if(SupRempli() == true){
-
-    }
-    if(IsBonus() == true){
-
-    }
-    if(IsTotalRempli(valeurs) == true){
-
-    }
     if(IsBrelan(valeurs) == true){
 
     }
@@ -860,12 +855,6 @@ function DeterminerCombi(){
 
     }
     // Chance
-    if(InfRempli() == true){
-
-    }
-    if(IsTotalGeneral() == true){
-
-    }
 }
 
 function IsAs(valeurs){
@@ -922,15 +911,50 @@ function IsSix(valeurs){
     return false;
 }
 
-function SupRempli(valeurs){
+function SupRempli(){
+    var isRempli = true;
+    var total = 0;
+    var sectionSup = document.getElementsByClassName(joueur);
+    var bonus = 0;
+    for(i = 0; i < 6; i++){
+        if(sectionSup[i].innerText == "" || sectionSup[i].classList.contains("option")){
+            isRempli = false;
+        }
+        else{
+            total = +total + +sectionSup[i].innerText;
+        }
+    }
+
+    if(isRempli){
+        Array.from(document.getElementsByClassName("Total")).forEach(totalSup => {
+            if(totalSup.classList.contains(joueur)){
+                totalSup.innerText = total;
+                Array.from(document.getElementsByClassName("Bonus")).forEach(element => {
+                    if(element.classList.contains(joueur)){
+                        if(total > 40){
+                            element.innerText = "35";
+                            bonus = 35;
+                        }
+                        else{
+                            element.innerText = 0;
+                        }
+                    }
+                });
+                Array.from(document.getElementsByClassName("TotalSup")).forEach(element => {
+                    if(element.classList.contains(joueur)){
+                        element.innerText = +total + +bonus;
+                    }
+                });
+            }
+        });
+    }
+}
+
+function IsBonus(){
     
 }
 
-function IsBonus(valeurs){
-    
-}
-
-function IsTotalRempli(valeurs){
+function IsTotalRempli(){
     
 }
 
