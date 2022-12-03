@@ -89,7 +89,18 @@ function Lancer(){
             }
         }
 
+        ViderOptions();
         DeterminerCombi();
+
+        const options = Array.from(document.getElementsByClassName('option'));
+
+        options.forEach(option => {
+            option.addEventListener('click', function handleClick(event) {
+                option.classList.remove("option");
+                ViderOptions();
+            });
+        });
+
         etatTour++;
     }
 }
@@ -100,7 +111,7 @@ function GetPos(de){
 	return [randomX,randomY];
 }
 
-function Selectionner(id){
+function Move(id){
     if(etatTour > 0){
         de = document.getElementById(id);
     
@@ -187,10 +198,12 @@ function DeterminerCombi(){
             if (valeurs[index] == 1) {
                 score = +score + +valeurs[index];
             }
+
         }
 
         Array.from(document.getElementsByClassName("As")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -204,7 +217,8 @@ function DeterminerCombi(){
         }
 
         Array.from(document.getElementsByClassName("Deux")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -217,7 +231,8 @@ function DeterminerCombi(){
         }
 
         Array.from(document.getElementsByClassName("Trois")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -230,7 +245,8 @@ function DeterminerCombi(){
         }
 
         Array.from(document.getElementsByClassName("Quatre")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -243,7 +259,8 @@ function DeterminerCombi(){
         }
 
         Array.from(document.getElementsByClassName("Cinq")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -256,7 +273,8 @@ function DeterminerCombi(){
         }
 
         Array.from(document.getElementsByClassName("Six")).forEach(element => {
-            if(element.classList.contains(joueur)){
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
                 element.innerText = score;
             }
         });
@@ -397,4 +415,11 @@ function InfRempli(valeurs){
 
 function IsTotalGeneral(valeurs){
     
+}
+
+
+function ViderOptions(){
+    Array.from(document.getElementsByClassName("option")).forEach(element => {
+        element.innerText = "";
+    });
 }

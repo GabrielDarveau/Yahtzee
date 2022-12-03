@@ -68,6 +68,10 @@ img{
     left: 800px;
 }
 
+.option{
+    color: red;
+}
+
 .bouton-lancer{
     margin-left: 80px;
     display: inline-block;
