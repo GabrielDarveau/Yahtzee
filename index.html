@@ -30,21 +30,26 @@
                     <img onclick="Move(this.id);" id="d5" src="img/5.png">
                     
                     <button onclick="Lancer();" class="bouton-lancer">Lancer</button>
-
+                    <div id="nom"></div>
+                    <div id="nbLancers"></div>
+                    <div>
+                        <button onclick="newGame()">New Game</button>
+                        <button onclick="restartGame()">Restart Game</button>
+                    </div>
 
             </div>
             <div id="container-fiche">      
                 <table id="fiche">
                     <!-- Section sup -->
                     <tr>
-                        <th id="titreTable" colspan="2"><h2>Yahtzee</h2></th>
+                        <th id="titreTable"><h2>Yahtzee</h2></th>
                     </tr>
                     <tr>
                         <th><h3>Section Supérieure</h3></th>
-                        <th class="Jeu1">Jeu 1</th>
-                        <th class="Jeu2">Jeu 2</th>
-                        <th class="Jeu3">Jeu 3</th>
-                        <th class="Jeu4">Jeu 4</th>
+                        <th class="ColJeu1">Jeu 1</th>
+                        <th class="ColJeu2">Jeu 2</th>
+                        <th class="ColJeu3">Jeu 3</th>
+                        <th class="ColJeu4">Jeu 4</th>
                     </tr>
                     <tr>
                         <td>Total des <b>AS</b></td>
@@ -113,10 +118,10 @@
                     <!-- Section inf -->
                     <tr>
                         <th><h3>Section inférieure</h3></th>
-                        <th class="Jeu1">Jeu 1</th>
-                        <th class="Jeu2">Jeu 2</th>
-                        <th class="Jeu3">Jeu 3</th>
-                        <th class="Jeu4">Jeu 4</th>
+                        <th class="ColJeu1">Jeu 1</th>
+                        <th class="ColJeu2">Jeu 2</th>
+                        <th class="ColJeu3">Jeu 3</th>
+                        <th class="ColJeu4">Jeu 4</th>
                     </tr>
                     <tr>
                         <td>Brelan &emsp;<b>Total des 5 dés</b></td>

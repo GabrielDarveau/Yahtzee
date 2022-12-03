@@ -1,33 +1,174 @@
 var etatTour = 0;
 const desSel = [0, 0, 0, 0, 0];
-var joueur = "Jeu1";
+var player = [];
+var rand;
+var joueur;
+var joueurActif;
 
 function innit(){
     document.getElementById("table").style.display = "none";
 }
 
-function Joueur(nom, val){
-    this.nom = nom;
-    this.val = val;
+class Joueur{
+    constructor(nom, val)
+    {
+        this.nom = nom;
+        this.val = val;
+    }
+}
+
+function newGame(){
+    etatTour = 0;
+    var joueurs = document.getElementById("nbJoueurs").value;
+
+    var max = joueurs;
+    max++;
+
+    rand = Math.floor(Math.random() * (max-1)) + 1;
+
+    alert("Ce sera le joueur " + rand + " qui commencera!");
+
+    joueur = "Jeu"+rand;
+    joueurActif = rand;
+
+    desSel[0] = 0;
+    document.getElementById("d1").style.top = "700px";
+    document.getElementById("d1").style.left = "400px";
+    document.getElementById("d1").style.transform = "rotate(0)";
+    document.getElementById("d1").classList.remove("active");
+
+    desSel[1] = 0;
+    document.getElementById("d2").style.top = "700px";
+    document.getElementById("d2").style.left = "500px";
+    document.getElementById("d2").style.transform = "rotate(0)";
+    document.getElementById("d2").classList.remove("active");
+
+    desSel[2] = 0;
+    document.getElementById("d3").style.top = "700px";
+    document.getElementById("d3").style.left = "600px";
+    document.getElementById("d3").style.transform = "rotate(0)";
+    document.getElementById("d3").classList.remove("active");
+
+    desSel[3] = 0;
+    document.getElementById("d4").style.top = "700px";
+    document.getElementById("d4").style.left = "700px";
+    document.getElementById("d4").style.transform = "rotate(0)";
+    document.getElementById("d4").classList.remove("active");
+
+    desSel[4] = 0;
+    document.getElementById("d5").style.top = "700px";
+    document.getElementById("d5").style.left = "800px";
+    document.getElementById("d5").style.transform = "rotate(0)";
+    document.getElementById("d5").classList.remove("active");
+
+    document.getElementById("titreTable").colSpan = max;
+
+    document.getElementById("nbLancers").innerHTML = " ";
+
+    if(joueurs == "1"){
+        var tab = document.getElementsByClassName("Jeu2");
+        var numb = document.getElementsByClassName("Jeu2").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        var tabJeu = document.getElementsByClassName("ColJeu2");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
+        tab = document.getElementsByClassName("Jeu3");
+        numb = document.getElementsByClassName("Jeu3").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu3");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+    }
+    else if(joueurs == "2"){
+        tab = document.getElementsByClassName("Jeu3");
+        numb = document.getElementsByClassName("Jeu3").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu3");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+    }
+    else if(joueurs == "3"){
+        tab = document.getElementsByClassName("Jeu4");
+        numb = document.getElementsByClassName("Jeu4").length;
+        for(let i = 0; i < numb; i++){
+            tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+    }
+
+    nomJoueur();
+}
+
+function restartGame(){
+    location.reload();
 }
 
 function start(){
     document.getElementById("choix").style.display = "none";
     var joueurs = document.getElementById("nbJoueurs").value;
+
     for(let i = 1; i <= joueurs; i++)
     {
         var leJoueur = prompt("Quel est votre nom joueur "+ i +" ?");
-        player=new Joueur(leJoueur, i);
+        player[i]=new Joueur(leJoueur, i);
     }
 
     var max = joueurs;
     max++;
 
-    var rand = Math.floor(Math.random() * (max-1)) + 1;
+    rand = Math.floor(Math.random() * (max-1)) + 1;
 
     if(joueurs > 1){
         alert("Ce sera le joueur " + rand + " qui commencera!");
     }
+
+    joueur = "Jeu"+rand;
+    joueurActif = rand;
 
     document.getElementById("table").style.display = "block";
     document.getElementById("titreTable").colSpan = max;
@@ -38,15 +179,35 @@ function start(){
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
         }
+
+        var tabJeu = document.getElementsByClassName("ColJeu2");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
         tab = document.getElementsByClassName("Jeu3");
         numb = document.getElementsByClassName("Jeu3").length;
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
         }
+
+        tabJeu = document.getElementsByClassName("ColJeu3");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
         tab = document.getElementsByClassName("Jeu4");
         numb = document.getElementsByClassName("Jeu4").length;
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
         }
     }
     else if(joueurs == "2"){
@@ -55,10 +216,23 @@ function start(){
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
         }
+
+        tabJeu = document.getElementsByClassName("ColJeu3");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
+
         tab = document.getElementsByClassName("Jeu4");
         numb = document.getElementsByClassName("Jeu4").length;
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
+        }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
         }
     }
     else if(joueurs == "3"){
@@ -67,14 +241,375 @@ function start(){
         for(let i = 0; i < numb; i++){
             tab[i].style.display = "none";
         }
+
+        tabJeu = document.getElementsByClassName("ColJeu4");
+        numb = tabJeu.length;
+        for(let i = 0; i < numb; i++){
+            tabJeu[i].style.display = "none";
+        }
     }
+
+    nomJoueur();
+}
+
+function nomJoueur(){
+    document.getElementById("nom").innerHTML = "Tour de: " + player[joueurActif].nom + "<br> Case: " + joueur;
 }
 
 function nextJoueur(){
-    activePlayer === 1 ? activePlayer = 1 : activePlayer = 0;
+    var joueurs = document.getElementById("nbJoueurs").value;
+    if(joueurs == 1 && joueur == "Jeu1")
+    {
+        etatTour = 0;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 2 && joueur == "Jeu1")
+    {
+        joueur = "Jeu2";
+        etatTour = 0;
+        joueurActif = 2;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 2 && joueur == "Jeu2")
+    {
+        joueur = "Jeu1";
+        etatTour = 0;
+        joueurActif = 1;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 3 && joueur == "Jeu1")
+    {
+        joueur = "Jeu2";
+        etatTour = 0;
+        joueurActif = 2;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 3 && joueur == "Jeu2")
+    {
+        joueur = "Jeu3";
+        etatTour = 0;
+        joueurActif = 3;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 3 && joueur == "Jeu3")
+    {
+        joueur = "Jeu1";
+        etatTour = 0;
+        joueurActif = 1;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 4 && joueur == "Jeu1")
+    {
+        joueur = "Jeu2";
+        etatTour = 0;
+        joueurActif = 2;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 4 && joueur == "Jeu2")
+    {
+        joueur = "Jeu3";
+        etatTour = 0;
+        joueurActif = 3;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 4 && joueur == "Jeu3")
+    {
+        joueur = "Jeu4";
+        etatTour = 0;
+        joueurActif = 4;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
+    else if(joueurs == 4 && joueur == "Jeu4")
+    {
+        joueur = "Jeu1";
+        etatTour = 0;
+        joueurActif = 1;
+        desSel[0] = 0;
+        document.getElementById("d1").style.top = "700px";
+        document.getElementById("d1").style.left = "400px";
+        document.getElementById("d1").style.transform = "rotate(0)";
+        document.getElementById("d1").classList.remove("active");
+
+        desSel[1] = 0;
+        document.getElementById("d2").style.top = "700px";
+        document.getElementById("d2").style.left = "500px";
+        document.getElementById("d2").style.transform = "rotate(0)";
+        document.getElementById("d2").classList.remove("active");
+
+        desSel[2] = 0;
+        document.getElementById("d3").style.top = "700px";
+        document.getElementById("d3").style.left = "600px";
+        document.getElementById("d3").style.transform = "rotate(0)";
+        document.getElementById("d3").classList.remove("active");
+
+        desSel[3] = 0;
+        document.getElementById("d4").style.top = "700px";
+        document.getElementById("d4").style.left = "700px";
+        document.getElementById("d4").style.transform = "rotate(0)";
+        document.getElementById("d4").classList.remove("active");
+
+        desSel[4] = 0;
+        document.getElementById("d5").style.top = "700px";
+        document.getElementById("d5").style.left = "800px";
+        document.getElementById("d5").style.transform = "rotate(0)";
+        document.getElementById("d5").classList.remove("active");
+    }
 }
 
 function Lancer(){
+    nomJoueur();
     if(etatTour < 3){
         for(let i = 1; i <= 5 ; i++){
             de = document.getElementById("d"+i);
@@ -91,6 +626,19 @@ function Lancer(){
             }
         }
 
+        if(etatTour == 0)
+        {
+            document.getElementById("nbLancers").innerHTML = "Nombre de lancers restants: " + 2;
+        }
+        else if(etatTour == 1)
+        {
+            document.getElementById("nbLancers").innerHTML = "Nombre de lancers restants: " + 1;
+        }
+        else if(etatTour == 2)
+        {
+            document.getElementById("nbLancers").innerHTML = "Nombre de lancers restants: " + 0;
+        }
+
         ViderOptions();
         DeterminerCombi();
 
@@ -104,6 +652,9 @@ function Lancer(){
         });
 
         etatTour++;
+    }
+    else{
+        nextJoueur();
     }
 }
 
