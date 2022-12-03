@@ -149,3 +149,19 @@ div#choix button{
     font-weight: bold;
     font-size: 15pt;
 }
+
+div#nom{
+    margin-left: 350px;
+    position: absolute;
+    top: 640px;
+    font-size: 24px;
+    color: blue;
+}
+
+div#nbLancers{
+    margin-left: 670px;
+    position: absolute;
+    top: 665px;
+    font-size: 24px;
+    color: red;
+}
