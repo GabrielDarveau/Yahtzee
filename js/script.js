@@ -610,7 +610,7 @@ function nextJoueur(){
 
 function Lancer(){
     nomJoueur();
-    if(etatTour < 3){
+    if(etatTour < 10){
         for(let i = 1; i <= 5 ; i++){
             de = document.getElementById("d"+i);
             if(!de.classList.contains("active")){
@@ -649,7 +649,8 @@ function Lancer(){
                 if(option.classList.contains("option")){
                     option.classList.remove("option");
                     ViderOptions();
-                    SupRempli();
+                    TotauxSup();
+                    TotauxInf();
                     nextJoueur();
                 }
             });
@@ -837,24 +838,59 @@ function DeterminerCombi(){
         });
     }
     if(IsBrelan(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("Brelan")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = +valeurs[0] + +valeurs[1] + +valeurs[2] + +valeurs[3] + +valeurs[4];
+            }
+        });
     }
     if(IsCarre(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("Carre")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = +valeurs[0] + +valeurs[1] + +valeurs[2] + +valeurs[3] + +valeurs[4];
+            }
+        });
     }
     if(IsFull(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("Full")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = 25;
+            }
+        });
     }
     if(IsPetiteSuite(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("PSuite")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = 30;
+            }
+        });
     }
     if(IsGrandeSuite(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("GSuite")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = 40;
+            }
+        });
     }
     if(IsYahtzee(valeurs) == true){
-
+        Array.from(document.getElementsByClassName("Yahtzee")).forEach(element => {
+            if(element.classList.contains(joueur) && element.innerText == ""){
+                element.classList.add("option");
+                element.innerText = 50;
+            }
+        });
     }
-    // Chance
+    Array.from(document.getElementsByClassName("Chance")).forEach(element => {
+        if(element.classList.contains(joueur) && element.innerText == ""){
+            element.classList.add("option");
+            element.innerText = +valeurs[0] + +valeurs[1] + +valeurs[2] + +valeurs[3] + +valeurs[4];
+        }
+    });
 }
 
 function IsAs(valeurs){
@@ -911,12 +947,12 @@ function IsSix(valeurs){
     return false;
 }
 
-function SupRempli(){
+function TotauxSup(){
     var total = 0;
     var sectionSup = document.getElementsByClassName(joueur);
     var bonus = 0;
     for(i = 0; i < 6; i++){
-        if(sectionSup[i].innerText != "" & !sectionSup[i].classList.contains("option")){
+        if(sectionSup[i].innerText != "" && !sectionSup[i].classList.contains("option")){
             total = +total + +sectionSup[i].innerText;
         }
     }
@@ -925,7 +961,7 @@ function SupRempli(){
             totalSup.innerText = total;
             Array.from(document.getElementsByClassName("Bonus")).forEach(element => {
                 if(element.classList.contains(joueur)){
-                    if(total > 10){
+                    if(total > 63){
                         element.innerText = "35";
                         bonus = 35;
                     }
@@ -939,47 +975,109 @@ function SupRempli(){
                     element.innerText = +total + +bonus;
                 }
             });
+            Array.from(document.getElementsByClassName("TotalSectionSup")).forEach(element => {
+                if(element.classList.contains(joueur)){
+                    element.innerText = +total + +bonus;
+                }
+            });
         }
     });
-
-        
-
 }
 
-function IsBonus(){
-    
-}
-
-function IsTotalRempli(){
-    
+function TotauxInf(){
+    var total = 0;
+    var sectionInf = document.getElementsByClassName(joueur);
+    for(i = 9; i < 16; i++){
+        if(sectionInf[i].innerText != "" && !sectionInf[i].classList.contains("option")){
+            total = +total + +sectionInf[i].innerText;
+        }
+    }
+    Array.from(document.getElementsByClassName("TotalSectionInf")).forEach(totalInf => {
+        if(totalInf.classList.contains(joueur)){
+            totalInf.innerText = total;
+        }
+    });
+    Array.from(document.getElementsByClassName("TotalG")).forEach(element => {
+        if(element.classList.contains(joueur)){
+            var totalG = +total + +sectionInf[17].innerText;
+            element.innerText = totalG;
+        }
+    });
 }
 
 function IsBrelan(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[2]){
+        return true;
+    }
+    else if(valeurs[1] == valeurs[3]){
+        return true;
+    }
+    else if(valeurs[2] == valeurs[4]){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function IsCarre(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[3]){
+        return true;
+    }
+    else if(valeurs[1] == valeurs[4]){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function IsFull(valeurs){
-    
-}
-
-function IsFull(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[2] && valeurs[3] == valeurs[4] && valeurs[0] != valeurs[4]){
+        return true;
+    }
+    else if(valeurs[0] == valeurs[1] && valeurs[2] == valeurs[4] && valeurs[0] != valeurs[4]){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function IsPetiteSuite(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[1]-1 && valeurs[1] == valeurs[2] -1 && valeurs[2] == valeurs[3] -1){
+        return true;
+    }
+    else if(valeurs[1] == valeurs[2]-1 && valeurs[2] == valeurs[3] -1 && valeurs[3] == valeurs[4] -1){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function IsGrandeSuite(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[1]-1 && valeurs[1] == valeurs[2] -1 && valeurs[2] == valeurs[3] -1 && valeurs[3] == valeurs[4] -1){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function IsYahtzee(valeurs){
-    
+    valeurs.sort((a,b) => a-b)
+    if(valeurs[0] == valeurs[4]){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function InfRempli(valeurs){
