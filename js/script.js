@@ -22,17 +22,28 @@ class Joueur{
 function newGame(){
     etatTour = 0;
     joueurs = document.getElementById("nbJoueurs").value;
+    document.getElementById("finPartie").style.display = "none";
 
     var max = joueurs;
     max++;
 
-    rand = Math.floor(Math.random() * (max-1)) + 1;
+    joueurActif = rand;
 
-    alert("Ce sera le joueur " + rand + " qui commencera!");
+    if(joueurs > 1){
+        alert("Ce sera " + player[joueurActif].nom + " qui commencera cette partie!");
+    }
 
     joueur = "Jeu"+rand;
-    joueurActif = rand;
     nbTour = 0;
+
+    for(let i = 1; i < 5; i++){
+        Array.from(document.getElementsByClassName("Jeu"+i)).forEach(element => {
+            if(element.classList.contains("Jeu"+i) && !element.innerText == ""){
+                element.classList.remove("option");
+                element.innerText = "";
+            }
+        });
+    }
 
     desSel[0] = 0;
     document.getElementById("d1").style.top = "700px";
@@ -154,10 +165,14 @@ function restartGame(){
 function start(){
     document.getElementById("choix").style.display = "none";
     joueurs = document.getElementById("nbJoueurs").value;
+    document.getElementById("finPartie").style.display = "none";
 
     for(let i = 1; i <= joueurs; i++)
     {
-        var leJoueur = prompt("Quel est votre nom joueur "+ i +" ?");
+        var leJoueur;
+        do{
+            leJoueur = prompt("Quel est votre nom joueur "+ i +" ?");
+        }while(!leJoueur);
         player[i]=new Joueur(leJoueur, i);
     }
 
@@ -166,12 +181,13 @@ function start(){
 
     rand = Math.floor(Math.random() * (max-1)) + 1;
 
+    joueurActif = rand;
+
     if(joueurs > 1){
-        alert("Ce sera le joueur " + rand + " qui commencera!");
+        alert("Ce sera " + player[joueurActif].nom + " qui commencera cette partie!");
     }
 
     joueur = "Jeu"+rand;
-    joueurActif = rand;
 
     document.getElementById("table").style.display = "block";
     document.getElementById("titreTable").colSpan = max;
@@ -256,7 +272,7 @@ function start(){
 }
 
 function nomJoueur(){
-    document.getElementById("nom").innerHTML = "Tour de: " + player[joueurActif].nom + "<br> Case: " + joueur;
+    document.getElementById("nom").innerHTML = "Tour de: " + player[joueurActif].nom + "<br> Colonne: " + joueur;
 }
 
 function nextJoueur(){
@@ -710,6 +726,7 @@ function DeterminerGagnant(){
         alert("Félicitation "+player[gagnant].nom+"! Vous avez score de "+ scores[gagnant]);
     }
 
+    afficherSelectPartie();
 }
 
 function Move(id){
@@ -1137,4 +1154,9 @@ function ViderOptions(){
         element.innerText = "";
         element.classList.remove("option");
     });
+}
+
+function afficherSelectPartie(){
+    document.getElementById("table").style.display = "none";
+    document.getElementById("finPartie").style.display = "block";
 }
