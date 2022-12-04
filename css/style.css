@@ -177,7 +177,7 @@ div#finPartie{
 
 div#finPartie button{
     font-weight: bold;
-    width: 120px;
+    width: 180px;
     font-size: 11pt;
     margin: 5px;
 }
@@ -185,4 +185,5 @@ div#finPartie button{
 div#finPartie p#nomGagnant{
     font-weight: bold;
     font-size: 18pt;
+    font-family: initial;
 }

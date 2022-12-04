@@ -21,6 +21,11 @@
                 <button onclick="start()">Nouvelle Partie</button>
             </div>
         </div>
+        <div id="finPartie">
+            <p id="nomGagnant">Sélection des parties :</p>
+            <button onclick="newGame()">Recommencer la partie</button><br>
+            <button onclick="restartGame()">Nouvelle partie</button>
+        </div>
         <div id="table">
             <div id="jeu">
                     <img onclick="Move(this.id);" id="d1" src="img/1.png">
@@ -32,11 +37,7 @@
                     <button onclick="Lancer();" class="bouton-lancer">Lancer</button>
                     <div id="nom"></div>
                     <div id="nbLancers"></div>
-                    <div id="finPartie">
-                        <p id="nomGagnant">Sélection des parties :</p>
-                        <button onclick="newGame()">New Game</button><br>
-                        <button onclick="restartGame()">Restart Game</button>
-                    </div>
+                    
 
             </div>
             <div id="container-fiche">      

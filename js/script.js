@@ -9,6 +9,7 @@ var joueurs;
 
 function innit(){
     document.getElementById("table").style.display = "none";
+    document.getElementById("finPartie").style.display = "none";
 }
 
 class Joueur{
@@ -23,6 +24,7 @@ function newGame(){
     etatTour = 0;
     joueurs = document.getElementById("nbJoueurs").value;
     document.getElementById("finPartie").style.display = "none";
+    document.getElementById("table").style.display = "block";
 
     var max = joueurs;
     max++;
@@ -165,7 +167,6 @@ function restartGame(){
 function start(){
     document.getElementById("choix").style.display = "none";
     joueurs = document.getElementById("nbJoueurs").value;
-    document.getElementById("finPartie").style.display = "none";
 
     for(let i = 1; i <= joueurs; i++)
     {
@@ -693,7 +694,7 @@ function Lancer(){
         etatTour++;
     }
     
-    if(nbTour >= 10){
+    if(nbTour >= 13){
         DeterminerGagnant();
     }
 }
@@ -708,11 +709,11 @@ function DeterminerGagnant(){
     var scores = [0,0,0,0];
     var gagnant;
 
-    for(i = 1 ; i <= joueurs; i++){
+    for(i = 0 ; i <= joueurs; i++){
         Array.from(document.getElementsByClassName("TotalG")).forEach(element => {
             if(element.classList.contains("Jeu"+i)){
-                scores[i-1] = element.innerText;
-                if(scores[i-1] == Math.max(scores)){
+                scores[i] = element.innerText;
+                if(scores[i] == Math.max(...scores)){
                     gagnant = i;
                 }
             }
