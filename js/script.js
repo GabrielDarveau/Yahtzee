@@ -5,6 +5,7 @@ var rand;
 var joueur;
 var joueurActif;
 var nbTour = 0;
+var joueurs;
 
 function innit(){
     document.getElementById("table").style.display = "none";
@@ -20,7 +21,7 @@ class Joueur{
 
 function newGame(){
     etatTour = 0;
-    var joueurs = document.getElementById("nbJoueurs").value;
+    joueurs = document.getElementById("nbJoueurs").value;
 
     var max = joueurs;
     max++;
@@ -152,7 +153,7 @@ function restartGame(){
 
 function start(){
     document.getElementById("choix").style.display = "none";
-    var joueurs = document.getElementById("nbJoueurs").value;
+    joueurs = document.getElementById("nbJoueurs").value;
 
     for(let i = 1; i <= joueurs; i++)
     {
@@ -260,6 +261,12 @@ function nomJoueur(){
 
 function nextJoueur(){
     var joueurs = document.getElementById("nbJoueurs").value;
+
+    if(joueur == "Jeu"+rand)
+    {
+        nbTour++;
+    }
+
     if(joueurs == 1 && joueur == "Jeu1")
     {
         etatTour = 0;
@@ -644,28 +651,34 @@ function Lancer(){
         ViderOptions();
         DeterminerCombi();
 
-        const options = Array.from(document.getElementsByClassName('option'));
+        const cases = Array.from(document.getElementsByClassName(joueur));
 
-        options.forEach(option => {
-            option.addEventListener('click', function handleClick() {
-                if(option.classList.contains("option")){
-                    option.classList.remove("option");
-                    ViderOptions();
-                    TotauxSup();
-                    TotauxInf();
-                    nextJoueur();
+        cases.forEach(element => {
+            element.addEventListener('click', function handleClick() {
+                if(element.classList.contains(joueur)){
+                    if(element.classList.contains("option")){
+                        element.classList.remove("option");
+                        ViderOptions();
+                        TotauxSup();
+                        TotauxInf();
+                        nextJoueur();
+                    }
+                    else if(element.innerText == "" || element.innerText == null){
+                        element.innerText = "0";
+                        ViderOptions();
+                        TotauxSup();
+                        TotauxInf();
+                        nextJoueur();
+                    }
                 }
             });
         });
 
         etatTour++;
     }
-    else if(nbTour < 13){
-        nextJoueur();
-        if(joueur == "Jeu"+rand)
-        {
-            nbTour++;
-        }
+    
+    if(nbTour >= 10){
+        DeterminerGagnant();
     }
 }
 
@@ -676,7 +689,27 @@ function GetPos(de){
 }
 
 function DeterminerGagnant(){
-    
+    var scores = [0,0,0,0];
+    var gagnant;
+
+    for(i = 1 ; i <= joueurs; i++){
+        Array.from(document.getElementsByClassName("TotalG")).forEach(element => {
+            if(element.classList.contains("Jeu"+i)){
+                scores[i-1] = element.innerText;
+                if(scores[i-1] == Math.max(scores)){
+                    gagnant = i;
+                }
+            }
+        });
+    }
+
+    if(joueurs > 1){
+        alert("Félicitation "+player[gagnant].nom+"! Vous avez remporté la partie avec un score de "+ scores[gagnant]);
+    }
+    else{
+        alert("Félicitation "+player[gagnant].nom+"! Vous avez score de "+ scores[gagnant]);
+    }
+
 }
 
 function Move(id){
@@ -1102,5 +1135,6 @@ function IsTotalGeneral(valeurs){
 function ViderOptions(){
     Array.from(document.getElementsByClassName("option")).forEach(element => {
         element.innerText = "";
+        element.classList.remove("option");
     });
 }
