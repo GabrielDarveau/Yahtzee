@@ -610,7 +610,7 @@ function nextJoueur(){
 
 function Lancer(){
     nomJoueur();
-    if(etatTour < 10){
+    if(etatTour < 3){
         for(let i = 1; i <= 5 ; i++){
             de = document.getElementById("d"+i);
             if(!de.classList.contains("active")){
