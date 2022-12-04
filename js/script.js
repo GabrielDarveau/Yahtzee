@@ -678,10 +678,10 @@ function Lancer(){
                         ViderOptions();
                         TotauxSup();
                         TotauxInf();
-                        if(nbTour >= 13){
+                        nextJoueur();
+                        if((joueurs == 1 && nbTour >= 13) || (joueurs == 2 && nbTour >= 13  && joueur == "Jeu"+rand) || (joueurs == 3 && nbTour > 12 && joueur == "Jeu"+rand) || (joueurs == 4 && nbTour >= 13 && joueur == "Jeu"+rand)){
                             DeterminerGagnant();
                         }
-                        nextJoueur();
 
                     }
                     else if(element.innerText == "" || element.innerText == null){
@@ -689,10 +689,10 @@ function Lancer(){
                         ViderOptions();
                         TotauxSup();
                         TotauxInf();
-                        if(nbTour >= 13){
+                        nextJoueur();
+                        if((joueurs == 1 && nbTour >= 13) || (joueurs == 2 && nbTour >= 13 && joueur == "Jeu"+rand) || (joueurs == 3 && nbTour > 12 && joueur == "Jeu"+rand) || (joueurs == 4 && nbTour >= 13 && joueur == "Jeu"+rand)){
                             DeterminerGagnant();
                         }
-                        nextJoueur();
                     }
                 }
             });
