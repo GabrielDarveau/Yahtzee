@@ -606,10 +606,10 @@ function nextJoueur(){
         document.getElementById("d5").style.transform = "rotate(0)";
         document.getElementById("d5").classList.remove("active");
     }
+    nomJoueur();
 }
 
 function Lancer(){
-    nomJoueur();
     if(etatTour < 3){
         for(let i = 1; i <= 5 ; i++){
             de = document.getElementById("d"+i);
@@ -667,6 +667,10 @@ function GetPos(de){
 	var randomX = Math.floor(Math.random() * 500);
 	var randomY = Math.floor(Math.random() * 1000);
 	return [randomX,randomY];
+}
+
+function DeterminerGagnant(){
+    
 }
 
 function Move(id){
