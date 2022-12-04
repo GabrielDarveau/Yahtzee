@@ -678,13 +678,20 @@ function Lancer(){
                         ViderOptions();
                         TotauxSup();
                         TotauxInf();
+                        if(nbTour >= 13){
+                            DeterminerGagnant();
+                        }
                         nextJoueur();
+
                     }
                     else if(element.innerText == "" || element.innerText == null){
                         element.innerText = "0";
                         ViderOptions();
                         TotauxSup();
                         TotauxInf();
+                        if(nbTour >= 13){
+                            DeterminerGagnant();
+                        }
                         nextJoueur();
                     }
                 }
@@ -692,10 +699,6 @@ function Lancer(){
         });
 
         etatTour++;
-    }
-    
-    if(nbTour >= 13){
-        DeterminerGagnant();
     }
 }
 
