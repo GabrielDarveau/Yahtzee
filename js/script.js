@@ -4,6 +4,7 @@ var player = [];
 var rand;
 var joueur;
 var joueurActif;
+var nbTour = 0;
 
 function innit(){
     document.getElementById("table").style.display = "none";
@@ -30,6 +31,7 @@ function newGame(){
 
     joueur = "Jeu"+rand;
     joueurActif = rand;
+    nbTour = 0;
 
     desSel[0] = 0;
     document.getElementById("d1").style.top = "700px";
@@ -658,8 +660,12 @@ function Lancer(){
 
         etatTour++;
     }
-    else{
+    else if(nbTour < 13){
         nextJoueur();
+        if(joueur == "Jeu"+rand)
+        {
+            nbTour++;
+        }
     }
 }
 
